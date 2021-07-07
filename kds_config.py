@@ -1,0 +1,2 @@
+MAX_SHARDS = 10
+STREAM_NAME = "TestStream"
