@@ -34,12 +34,12 @@ def stop_running_jobs():
 
 
 # Start jobs back up
-def start_jobs():
+def start_jobs(num_workers):
     res = glue.list_jobs(Tags={"Scale": "1"})
     jobs = res["JobNames"]
 
     for job in jobs:
-        res = glue.start_job_run(JobName=job, NumberOfWorkers=10, WorkerType='G.1X')
+        res = glue.start_job_run(JobName=job, NumberOfWorkers=num_workers, WorkerType='G.1X')
         print(f'Job Run Id {res["JobRunId"]}')
 
 
@@ -63,4 +63,6 @@ def update_shards(stream_name, target_shard_count):
 
 # update_shards('TestStream', 2)
 
-start_jobs()
+# start_jobs()
+
+stop_running_jobs() 
