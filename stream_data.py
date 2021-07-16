@@ -3,7 +3,6 @@ import subprocess
 import csv
 import json
 import time
-from kds_config import MAX_SHARDS, STREAM_NAME
 
 
 
@@ -31,6 +30,6 @@ with open("all_stocks_5yr.csv") as csvfile:
 
 
 for data in all_data:
-    resp = kds_client.put_record(StreamName=STREAM_NAME, Data=json.dumps(data), PartitionKey=data['name'])
+    resp = kds_client.put_record(StreamName="TestStream", Data=json.dumps(data), PartitionKey=data['name'])
     print(resp)
     time.sleep(0.1)
